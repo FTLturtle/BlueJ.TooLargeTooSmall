@@ -5,29 +5,44 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.util.Random;
+import java.util.Scanner;
+
 public class Main
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Main
-     */
-    public Main()
-    {
-        // initialise instance variables
-        x = 0;
+    
+    public static void main(String[] args){
+        tooLargeTooSmall();
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public static void tooLargeTooSmall()
     {
-        // put your code here
-        return x + y;
+        Random rand = new Random();
+        int target = rand.nextInt(10) + 1;
+        System.out.print("A random number has been generated between 1 and 10 inclusive\nYou must guess this number\n");
+        int guess;
+        int guessCounter;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Input guess: ");
+        guess = scanner.nextInt();
+        guessCounter = 1;
+        
+        while (guess != target){
+            
+            if (guess > target){
+                System.out.print("Too high, guess again: ");
+            }
+            
+            else if (guess < target){
+                System.out.print("Too low, guess again: ");
+            }
+            
+            guess = scanner.nextInt();
+            guessCounter++;
+        }
+        
+        System.out.print("Correct! It took you " + guessCounter + " guesses to get to the correct answer\n");
     }
 }
